@@ -1,0 +1,512 @@
+/* #############################################################################
+
+	File: NormSetBoiler CSS
+	Author: Tobias Baldauf, http://who.tobias.is
+
+	Description:
+		A merger between H5BP's CSS Reset + defaults, Normalize.css as well as 
+		several smaller snippets & gists.
+		The aim of this project is to create a sensible, consistent,
+		predictable, cross-browser, valid default CSS while maintaining
+		a small selector footprint for performance.
+
+	Notes:
+		Sections within this document are marked by hash (#) lines. Each 
+		separete block within a section is documented by comments. The first
+		few section are global & need no changing in between projects. CSS
+		hacks for IE<8 etc. have deliberately NOT been included to ascertain
+		validity.
+
+	References:
+		- http://html5boilerplate.com/
+		- http://meyerweb.com/eric/tools/css/reset/
+		- git.io/normalize
+		- Link to Gists etc.
+
+	Merged Versions:
+		- Normalize.css: 2.0.1 @ Github (20121021)
+		- H5BP's main.css: 4.0.0 @ Github (20120917)
+############################################################################# */
+
+
+/* #############################################################################
+	H5BP's Reset boiled down to definitions for elements we're actually using:
+############################################################################# */
+
+/*	The classic reset itself */
+html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, pre, 
+code, img, small, strong, sup, ol, ul, li, fieldset, form, label, legend, 
+table, tbody, thead, tr, th, td, article, canvas, footer, header, menu, nav, 
+section, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+
+/*	Deal with table-borders */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* #############################################################################
+	Minimal base styles that won't change in between projects:
+############################################################################# */
+
+/*	Always force a scrollbar in non-IE
+	Remove iOS text size adjust without disabling user zoom: www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/ */
+html {
+	overflow-y: scroll;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+/* Smoother font-rendering:
+	http://coderwall.com/p/z7egjg */
+body {
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-moz-font-smoothing: subpixel-antialiased;
+	-o-font-smoothing: subpixel-antialiased;
+	font-smoothing: subpixel-antialiased;
+}
+
+/*	Define default behaviour for HTML5 elements */
+article,
+footer,
+header,
+menu,
+nav,
+section,
+time {
+	display: block;
+}
+
+/*	Corrects 'inline-block' display not defined in IE 6/7/8/9 and Firefox 3 */
+audio,
+canvas,
+video {
+	display: inline-block;
+}
+
+/*	Prevents displaying 'audio' w/out controls & removes excess height in iOS5 */
+audio:not([controls]) {
+	display: none;
+	height: 0;
+}
+
+/*	Addresses styling for 'hidden' attribute not present in IE 8/9 */
+[hidden] {
+	display: none;
+}
+
+/*	Addresses 'outline' inconsistency between Chrome and other browsers */
+a:focus {
+	outline: thin dotted;
+}
+
+/*	Accessible focus treatment: 
+	people.opera.com/patrickl/experiments/keyboard/test */
+a:hover,
+a:active,
+input[type=search]:focus {
+	outline: none;
+}
+
+/*	Sensible default setting for ordered lists */
+ol {
+	list-style-type: decimal;
+}
+
+/*  Remove margins for navigation lists as well as footer lists
+    http://dev.w3.org/html5/spec/the-nav-element.html#the-nav-element */
+nav ul,
+nav li,
+footer ul,
+footer li {
+    margin: 0;
+    list-style: none outside none;
+}
+
+/*	Addresses inconsistent and variable font size in all browsers */
+small {
+	font-size: 80%;
+}
+
+strong,
+th {
+	font-weight: bold;
+}
+
+/*	Reasonable default behaviour of content within table-cells */
+td {
+	vertical-align: top;
+}
+
+/*	Set sup without affecting line-height: gist.github.com/413930 */
+sup {
+	position: relative;
+	top: -.5em;
+	font-size: 75%;
+	line-height: 0;
+}
+
+/*	Make code-snippets wrapped in <pre><code>$foo</code></pre> wrap nicely
+	See: www.pathf.com/blogs/2008/05/formatting-quoted-code-in-blog-posts-css21-white-space-pre-wrap */
+pre {
+	white-space: pre;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+/*	Make inputs and buttons play nice in IE:
+	www.viget.com/inspire/styling-the-button-element-in-internet-explorer/
+	Corrects font family not being inherited in all browsers.
+	Corrects font size not being inherited in all browsers. Set to match <body>
+	FF4+ setting line-height on input w/ !important in UA stylesheet
+	WebKit browsers add a 2px margin outside the chrome of form elements.
+	Firefox adds a 1px margin above and below textareas
+	Align to baseline */
+button,
+input,
+select,
+textarea {
+	width: auto;
+	overflow: visible;
+	margin: 0;
+	vertical-align: baseline;
+	font: normal normal normal 100%/normal inherit;
+}
+
+/*	Remove default scrollbar in IE8/9 & improve readability & usability */
+textarea {
+	overflow: auto;
+	vertical-align: top;
+	resize: vertical;
+}
+
+/*	Corrects overflow displayed oddly in IE 9 */
+svg:not(:root) {
+	overflow: hidden;
+}
+
+/*	Hand cursor on clickable input elements */
+label,
+html input[type="button"],
+input[type="submit"],
+button {
+	-webkit-appearance: button;
+	cursor: pointer;
+}
+
+/*	Reset default cursor for disabled elements */
+button[disabled],
+input[disabled] {
+	cursor: default;
+}
+
+/* Removes inner padding and border in Firefox 4+ */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+/*	Fixes box-sizing set to content-box in IE 8/9 & removes excess padding */
+input[type="checkbox"],
+input[type="radio"] {
+	box-sizing: border-box;
+	padding: 0;
+}
+
+/*	Remove Webkit default styling of search input form for better consistency */
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration,
+input[type=search]::-webkit-search-results-button,
+input[type=search]::-webkit-search-results-decoration {
+	-webkit-appearance: none;
+}
+
+/*	Fixes appearance: searchfield & box-sizing: border-box in Webkit & Gecko */
+input[type=search] {
+	-webkit-appearance: textfield;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+
+/* #############################################################################
+	Site-Specific base styes:
+	These should be altered, but NOT removed, to match the current project 
+############################################################################# */
+
+/*	Font normalization with REM units:
+	http://snook.ca/archives/html_and_css/font-size-with-rem */
+html {
+	font-size: 62.5%;
+}
+
+/* 	Optimized Legibility & font stack tested with @mathias' font-family name 
+	tester: http://mothereff.in/font-family */
+body {
+	font: normal normal normal 1.716rem/2.432rem Helvetica Neue, Helvetica, Arial, sans-serif;
+	color: #222;
+	text-shadow: 0 0 1px #fff;
+}
+
+/*	Fibonacci- / Lucas Sequence Heading Sizes:
+	http://www.webdesignerdepot.com/2012/06/sizing-type-with-lucas-sequences */
+
+h1 {
+	font-size: 4.148rem;
+	line-height: 4.148rem;
+	margin: 2.432rem 0;
+}
+
+h2 {
+	font-size: 2.432rem;
+	margin: 1.716rem 0;
+}
+
+h3 {
+	font-size: 1.716rem;
+	margin: 0.716rem 0;
+}
+
+/*	Remove border when inside 'a' element in IE 8/9 & improve quality in IE<8
+	and remove gap between image & bottom of its container: h5bp.com/i/440 */
+img {
+	border: 0;
+	-ms-interpolation-mode: bicubic;
+	vertical-align: middle;
+}
+
+/*	Normalize monospace sizing:
+	en.wikipedia.org/wiki/MediaWiki_talk:Common.css/Archive_11#Teletype_style_fix_for_Chrome */
+pre,
+code {
+	font-family: Courier New, Courier, monospace, serif;
+	font-size: 1.0rem;
+}
+
+/*	Reasonable assumptions for horizontal rule */
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 1em 0;
+	padding: 0;
+}
+
+/*	Selection background color declarations with no text-shadow
+	twitter.com/miketaylr/status/12228805301 */
+::-moz-selection {
+	background: #fec;
+	color: #222;
+	text-shadow: none;
+}
+
+::selection {
+	background: #fec;
+	color: #222;
+	text-shadow: none;
+}
+
+/*	iOS Tap Highlight Color
+	j.mp/webkit-tap-highlight-color */
+a:link {
+	-webkit-tap-highlight-color: #fec;
+}
+
+/*	Color (in)valid HTML5 form pseudoelements, fixed to highlight on activity
+	http://stackoverflow.com/a/7921385 */
+input:required:valid,
+textarea:required:valid {
+	background-color: #fff;
+	color: #222;
+}
+
+input:focus:required:invalid,
+textarea:focus:required:invalid {
+	border-radius: 1px;
+	-moz-box-shadow: 0 0 5px red;
+	-webkit-box-shadow: 0 0 5px red;
+	box-shadow: 0 0 5px red;
+	background-color: #fdd;
+}
+
+
+/* #############################################################################
+	Custom User Styles:
+	Here is the place to fiddle to your heart's content 
+############################################################################# */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* #############################################################################
+	Non-Semantic Helper Classes
+############################################################################# */
+
+/*	Hide from both screenreaders and browsers: h5bp.com/u */
+
+.hidden {
+	display: none !important;
+	visibility: hidden;
+}
+
+/*	Hide only visually, but have it available for screenreaders: h5bp.com/v */
+
+.visuallyhidden,
+.screen-reader-text {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+/*	Extends the .visuallyhidden class to allow the element to be focusable
+	when navigated to via the keyboard: h5bp.com/p */
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+	clip: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	position: static;
+	width: auto;
+}
+
+/*	Hide visually and from screenreaders, but maintain layout */
+.invisible {
+	visibility: hidden;
+}
+
+/*	Clearfix: Contain floats, avoid Opera bug & use 'table' to contain the 
+	top-margins of child elements. Disregards IE<8 */
+.clearfix:before,
+.clearfix:after {
+	content: " ";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+
+/* #############################################################################
+	Sensible default print styles:
+	Inlined to avoid HTTP request: www.phpied.com/delay-loading-your-print-css/
+############################################################################# */
+
+@media print {
+
+	* {
+		background: transparent !important;
+		color: #000 !important;
+		text-shadow: none !important;
+		filter: none !important;
+		-ms-filter: none !important;
+	}
+
+	/*	Black prints faster: sanbeiji.com/archives/953 */
+	a,
+	a:visited {
+		color: #444 !important;
+		text-decoration: underline;
+	}
+
+	/*	Prints URL + link title */
+	a[href]:after {
+		content: " (" attr(href) ")";
+	}
+
+	abbr[title]:after {
+		content: " (" attr(title) ")";
+	}
+
+	/*	Don't show links for images, or javascript/internal links */
+	pre {
+		border: 1px solid #999;
+		page-break-inside: avoid;
+	}
+
+	thead {
+		display: table-header-group;
+	}
+
+	/*	css-discuss.incutio.com/wiki/Printing_Tables */
+	tr,
+	img {
+		page-break-inside: avoid;
+	}
+
+	img {
+		max-width: 100% !important;
+	}
+
+	@page {
+		margin: .5cm;
+	}
+
+	p,
+	h2,
+	h3 {
+		orphans: 3;
+		widows: 3;
+	}
+
+	h2,
+	h3 {
+		page-break-after: avoid;
+	}
+
+}
